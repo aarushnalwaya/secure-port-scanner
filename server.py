@@ -1,12 +1,28 @@
 import socket
 import ssl
 import threading
+import time
 from services import detect_service
 
 HOST = "0.0.0.0"
 PORT = 5000
 
 def scan_ports(target, start_port, end_port):
+    results = []
+    threads = []
+    lock = threading.Lock()
+    start_time = time.time()
+
+    # scanning logic
+
+    end_time = time.time()
+    print("Time taken:", end_time - start_time)
+
+    
+
+def scan_ports(target, start_port, end_port):
+    start_time = time.time()   # START HERE
+
     results = []
     threads = []
     lock = threading.Lock()
@@ -32,6 +48,10 @@ def scan_ports(target, start_port, end_port):
 
     for thread in threads:
         thread.join()
+
+    end_time = time.time()   # END HERE
+
+    print("Time taken:", round(end_time - start_time, 3), "seconds")
 
     return results
 
